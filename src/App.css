@@ -1,38 +1,628 @@
-.App {
-  text-align: center;
-}
+@charset "utf-8";
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* Declare Root styles. */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Using variables to keep the layout and CSS styles consistent across the entire design of the website. */
+:root {
+    /* Color Pallete Variables. */
+    --primary-color: #567fca;
+    --white: #ffffff;
+    --slate-black: #141414;
+    --light-slate-black: #131212;
+    --tint: rgba(84, 125, 201, 0.05);
+    --tint-mobile: rgba(84, 125, 201, 0.5);
+    /* Font Family Variables. */
+    --heading-font: 'nasalization', sans-serif;
+    --links-font: 'ocr-a-std', monospace;
+    --body-font: 'museo-sans-rounded', sans-serif;
+    /* Font Sizing Variables. */
+    --font-xxs: 0.9rem;
+    --font-xs: 1.2rem;
+    --font-sm: 1.4rem;
+    --font-md: 1.6rem;
+    --font-lg: 1.8rem;
+    --font-xlg: 2rem;
+    --font-xxlg: 2.2rem;
+    --hero-heading: 3.6rem;
+    --primary-heading: 4.8rem;
+    --sub-heading: 2.8rem;
+    --secondary-heading: 3rem;
+    /* Transition Variable. */
+    --transition: all 0.3s ease-in-out;
   }
+  
+  /* Apply the border-box sizing to all elements and either before and after elements. */
+  html,
+  *, ::after, ::before {
+    box-sizing: border-box;
+  }
+  
+  /* All elements will inherit the box-sizing set in the root html styles. */
+  *::before, *::after, * {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    line-height: 1.6;
+    font-size: 100%;
+  }
+
+  /* Start of scrollbar styles for browsers that support these styles. */
+body::-webkit-scrollbar {
+  width: 7px; /* width of the entire scrollbar */
 }
 
-.App-header {
-  background-color: #282c34;
+/* Scrollbar track background color */
+body::-webkit-scrollbar-track {
+  background: var(--slate-black); 
+}
+
+body::-webkit-scrollbar-thumb {
+  /* Adjust the colour of the scroll thumb */
+  background-color: var(--primary-color); 
+  /* The roundness of the scroll thumb. */
+  border-radius: 25px;
+  /* The scrollbar height. */
+  height: 2rem;
+}
+
+/* End of scrollbar styles. */
+
+/* If the user selects any body copy or elements on the page, adjust the font and background colours. */
+*::selection {
+  background-color: var(--white);
+  color: var(--primary-color);
+}
+  
+  /* Remove the default padding and margins on all heading elements, this way I have more control over individual elements. */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    padding: 0;
+    margin: 0;
+    /* Overwrite line-height for headings as they are much larger and don't need much spacing between when breaking to a new line.  */
+    line-height: 1.2;
+    /* Assign the heading font variable to all headings. */
+    font-family: var(--heading-font);
+  }
+  
+  p {
+    font-family: var(--body-font);
+    font-weight: 500;
+    font-style: normal;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    transition: var(--transition);
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  /* Header styles. */
+  header {
+    width: 100%;
+    filter: none;
+    z-index: 99;
+    transition: var(--transition);
+    position: fixed;
+  }
+  
+  /* Nav anchor styles, font family, size, weight, and some letter spacing. */
+  nav ul li a {
+    color: var(--white);
+    font-family: var(--links-font);
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.05rem;
+  }
+  
+  header .nav-link {
+    font-size: 0.9rem;
+    transition: var(--transition);
+  }
+  
+  header .nav-link:hover {
+    color: var(--primary-color);
+  }
+  
+  nav ul li a {
+    /* Set up a transition to be used when hovered later on. */
+    transition: 0.3s;
+  }
+  
+  /* Set the links to the primary gold color when hovered over or once a link becomes active. */
+  nav ul li a:hover,
+  .navbar-dark .navbar-nav .nav-link.active {
+    color: var(--primary-color);
+  }
+
+  
+  /* Background and white space styles of the navbar bootstrap component */
+  .navbar {
+      /* background-image: radial-gradient(circle, rgba(22, 22, 22, 1) 0%, rgba(24, 24, 24, 1) 100%); */
+      background-color: transparent;
+      padding: 1rem 0;
+      margin: 0;
+  }
+  
+  /* Add spacing between each navbar item. */
+  .nav-item {
+      padding: 0 0.75rem;
+  }
+  
+  /* Set the canvas width to be minimum 75 vertical width of the viewport at all times regardless of screen size, this is to allow users to click off the menu to close it. It can only be a maximum of 600 pixels wide. */
+  @media screen and (max-width: 1200px){
+    .offcanvas {
+      max-width: min(75vw, 600px)!important;
+    }
+  
+    /* Remove the default canvas border when toggled out from the side. */
+    div .offcanvas.offcanvas-end {
+      border-left: none;
+    }
+  }
+
+  [data-bs-theme=dark] .navbar-toggler-icon {
+    background-image: url(../src/images/hamburger.svg);
+  }
+
+
+  /* Override bootsrap navbar-toggler button styles. */
+  div .navbar-toggler {
+      outline: none;
+      /* Apply custom size to the hamburger menu */
+      font-size: 2rem;
+      border: none;
+      box-shadow: none;
+      padding: 0.5rem;
+      /* background-color: var(--light-slate-black);
+      border-radius: 0.25rem; */
+  }
+  
+  /* Remove the default box shadow when the toggler button is in the focused state. */
+  div .navbar-toggler:focus {
+      box-shadow: none;
+  }
+  
+  /* Center the navbar element contents. */
+  .navbar > .container-fluid {
+    justify-content: center;
+  }
+  
+  #navbarNav > div {
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    padding: 0.5rem 3rem;
+  }
+
+  nav .navbar-brand {
+    margin-right: 0;
+  }
+
+  /* Navigation Bar Media Query */
+  @media screen and (max-width: 1200px) {
+  
+      .navbar-nav {
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+      }
+  
+      /* At width of 1200px of the viewport, the container elements will shift back to the left using space between */
+      .navbar > .container-fluid {
+          justify-content: space-between;
+      }
+  
+      /* Remove the navbar background at smaller device widths, creates a more clean design as I don't have a navigation logo. */
+      .navbar {
+        background-image: none;
+      }
+  
+      /* White space on the top and bottom of the navigation item elements. */
+      .nav-item {
+          margin: 1rem 0;
+      }
+  
+      /* Set the background color of the slide out canvas body at smaller screen widths. */
+      .offcanvas-body {
+          background-color: var(--light-slate-black);          
+      }
+
+      #navbarNav > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+      }
+
+      #logo {
+        display: flex;
+        margin: 0 auto 2rem auto;
+        
+      }
+  }
+  
+/* Start of Hero Styles */
+
+/* This wrapper covers the nav and hero section elements, proving a neat background effect with a transparent navigation. I really liked this. */
+#hero-wrapper {
+  /* Thank you to Adobe Stock for the background image, reference here: https://stock.adobe.com/ca/search/images?k=space+cartoon+background&search_type=usertyped&asset_id=503188436 */
+  background-image: radial-gradient(circle, rgba(22, 22, 22, 0.6) 0%, rgba(13, 13, 13, 1) 100%),
+  url(../src/images/landing-images/galaxy-background-dark.jpeg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+
+section {
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+/* The primary hero section container. */
+#hero {
+  /* Display as grid to allow for the stacking of content on top of one another. */
+  display: grid;
+  max-width: 100%;
+  /* Set up the grid, creating 12 equal columns with 1 fractional unit. */
+  grid-template-columns: repeat(12, 1fr);
+  /* Center all content and items. */
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-content: center;
+  align-items: center;
+  /* The container will occupy 100% of the viewport.  */
+  min-height: 100vh;
+  /* Bump the container up slightly with some bottom padding. */
+  padding: 15rem 0 8rem 0;
 }
 
-.App-link {
-  color: #61dafb;
+/* This is the primary content child of the hero container */
+#hero > article {
+  /* Positioned in the 3rd column spanning to the 11th column, staying in the first row.. Overlapping the image that is also in the grid container. */
+  grid-area: 1 / 3 / 1 / 12;
+  /* Make sure the content overlaps the image by setting the z-index to a higher value in the stack order.  */
+  z-index: 2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* This is the primary image child of the hero container.  */
+#hero > figure {
+  /* Start at the 6th column, ending at the 11th column, stays in the first row. */
+  grid-area: 1 / 9 / 1 / 12;
+  z-index: 1;
+}
+
+/* Keep the image proportions intact by setting a max-width to the image. */
+#hero > figure img {
+  max-width: 100%;
+  /* Cover the container space whenever available. */
+  object-fit: cover;
+}
+
+#hero > article h1
+ {
+  color: var(--primary-color);
+  /* Dynamically adjust the h1 font between two variables depending on the viewport width, rather than needing to use media queries to change the font sizes it can be done with the clamp function. */
+  font-size: clamp(var(--sub-heading), 5vw, var(--hero-heading));
+  font-family: var(--heading-font);
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.10rem;
+  text-transform: uppercase;
+}
+
+/* Using the clamp function, adjust the font size depending on the viewport width. */
+#hero > article h2 {
+  font-family: var(--links-font);
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(var(--sub-heading), 2vw, var(--section-heading));
+  margin: 1rem 0 0 0;
+}
+
+/* Adjustments to the hero content width and text alignment. */
+#hero > article p {
+  max-width: 700px;
+  margin: 2rem 0;
+  line-height: 1.8;
+}
+
+#hero > article h2,
+#hero > article p {
+  text-align: left;
+}
+
+#hero > article h2,
+#hero > article p {
+  color: var(--white);
+}
+
+#hero > article a,
+#solaris-features a,
+#get-started > article a {
+  display: inline-block;
+  background-color: white;
+  color: var(--light-slate-black);
+  box-shadow: 6px 6px 0 0 var(--primary-color);
+  outline: 0.15rem solid var(--light-slate-black);
+  text-decoration: none;
+  padding: 0.8rem 2rem;
+  letter-spacing: 0.1rem;
+  font-size: var(--font-xxs);
+  margin-top: 1rem;
+  text-transform: uppercase;
+  transition: var(--transition);
+  font-family: var(--heading-font);
+  min-width: 180px;
+}
+
+#hero > article a:hover, 
+#solaris-features a:hover,
+#get-started > article a:hover {
+  transform: translateY(0.2rem);
+  background-color: var(--primary-color);
+  color: var(--white);
+  box-shadow: 6px 6px 0 0 var(--white);
+}
+
+#solaris-features a:hover{
+  box-shadow: 6px 6px 0 0 var(--light-slate-black);
+}
+
+.image-wrapper {
+  filter: opacity(1);
+}
+
+@media screen and (max-width: 1500px){
+  .image-wrapper {
+    filter: opacity(0.25);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* End of Hero Styles */
+
+#about, #get-started {
+  display: grid;
+  max-width: 1600px;
+  margin: 0 auto;
+  min-height: 100vh;
+  text-align: center;
+  padding: 10rem 1rem;
+}
+
+#about h2, #get-started h2 {
+  font-size: clamp(var(--font-xlg), 5vw, var(--secondary-heading));
+  color: var(--primary-color);
+  text-transform: uppercase;
+}
+
+#solaris-features {
+  margin: 6rem auto 5rem auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 4rem;
+  padding: 0 1rem;
+}
+
+@media screen and (max-width: 1366px) {
+  
+  #solaris-features {
+    max-width: 600px;
+    grid-template-columns: 1fr;
+    margin: 2rem auto;
   }
+
+  #solaris-features article {
+    margin: 2rem 0;
+  }
+  
+}
+
+#solaris-features h3 {
+  transition: var(--transition);
+  color: var(--light-slate-black);
+  font-size: clamp(var(--font-lg), 5vw, 2rem);
+}
+
+#solaris-features p {
+  margin-bottom: 2rem;
+  color: var(--light-slate-black);
+}
+
+#solaris-features img {
+  margin: 2rem 0;
+}
+
+.get-started-wrapper {  
+  /* Thank you to Adobe Stock for the background image graphic, reference here: https://stock.adobe.com/ca/images/vector-flat-space-design-background-with-small-elements/217913053?prev_url=detail */
+  background-image: radial-gradient(circle, rgba(22, 22, 22, 0.7) 0%, rgba(13, 13, 13, 0.95) 100%), 
+  url(../src/images/landing-images/galaxy-map-image.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#get-started {
+  /* Display as grid to allow for the stacking of content on top of one another. */
+  display: grid;
+  max-width: 100%;
+  /* Set up the grid, creating 12 equal columns with 1 fractional unit. */
+  grid-template-columns: repeat(9, 1fr);
+  /* Center all content and items. */
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  /* The container will occupy 100% of the viewport.  */
+  min-height: 100vh;
+  /* Bump the container up slightly with some bottom padding. */
+  padding: 10rem 0 8rem 0;
+}
+
+#get-started > article {
+  /* Positioned in the 3rd column spanning to the 11th column, staying in the first row.. Overlapping the image that is also in the grid container. */
+  grid-area: 1 / 5 / 1 / 9;
+  /* Make sure the content overlaps the image by setting the z-index to a higher value in the stack order.  */
+  z-index: 2;
+  color: var(--white);
+}
+
+/* This is the primary image child of the hero container.  */
+#get-started > figure {
+  /* Start at the 6th column, ending at the 11th column, stays in the first row. */
+  grid-area: 1 / 2 / 1 / 5;
+  z-index: 1;
+}
+
+/* Keep the image proportions intact by setting a max-width to the image. */
+#get-started > figure img {
+  max-width: 100%;
+  /* Cover the container space whenever available. */
+  object-fit: cover;
+}
+
+#get-started > article p {
+  max-width: 660px;
+  margin: 2rem auto;
+}
+
+
+/* At a max device width of 1200px, these styles will render.  */
+@media screen and (max-width: 1200px) {
+
+  /* Add some slight padding on the left and right container edges on smaller screens.  */
+  section {
+    padding: 0 1rem;
+  }
+
+  /* Convert the hero grid container to a single column layout, this will stack the grid children ontop of one another. */
+  #hero, #get-started {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 10rem 1rem 3rem 1rem;
+  }
+
+  /* Alignment additions for the mobile hero section. */
+  #hero > article h2,
+  #hero > article p,
+  #get-started > article h2,
+  #get-started > article p {
+    text-align: center;
+  }
+
+  #hero > article p {
+    margin: 1.5rem auto;
+  }
+
+  @media screen and (max-width: 768px){
+
+    p {
+      font-size: 1em;
+      padding: 0 0.5rem;
+    }
+
+    #hero > article p,
+    #get-started > article p {
+      margin: 2.5rem auto;
+    }  
+
+  }
+
+  /* Place each of the grid items in the same row and column tracks to allow them to stack in a centered fashion on smaller screens. */
+  #hero > article,
+  #get-started > article {
+    grid-area: 1 / 1 / 1 / 8;
+    padding-bottom: 6rem;
+  }
+
+  #hero > figure,
+  #get-started > figure {
+    grid-area: 1 / 1 / 1 / 8;
+  }
+
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  background-color: rgb(10, 10, 10);
+  padding: 2rem 0;
+}
+
+footer nav .navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1rem 0 1rem 5rem;
+  padding: 0;
+}
+
+footer .nav-link {
+  margin: 1rem;
+  font-family: var(--links-font);
+  font-size: var(--font-xxs);
+  transition: var(--transition);
+}
+
+footer .nav-link:hover {
+  color: var(--primary-color);
+}
+
+@media screen and (max-width: 1200px) {
+
+  footer {
+    flex-direction: column;
+    padding: 3rem 0;
+  }
+
+  footer nav .navbar-nav {
+    flex-direction: row;
+    margin: 0;
+    margin-top: 2rem;
+  }
+
+  footer .nav-link {
+    margin: 0 1rem;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  footer nav .navbar-nav {
+    flex-direction: column;
+  }
+  
+}
+
+#add-planets-wrapper {
+  /* Thank you to Adobe Stock for the background image, reference here: https://stock.adobe.com/ca/search/images?k=space+cartoon+background&search_type=usertyped&asset_id=503188436 */
+  background-image: radial-gradient(circle, rgba(22, 22, 22, 0.6) 0%, rgba(13, 13, 13, 1) 100%),
+  url(../src/images/landing-images/galaxy-background-dark.jpeg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+#add-planets {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  min-height: 100vh;
 }

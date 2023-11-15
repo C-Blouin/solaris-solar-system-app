@@ -1,23 +1,37 @@
-import logo from './logo.svg';
+// Importing normalize.css to reset the browser's default styles before applying the custom styles.
+import '../src/normalize.css';
 import './App.css';
+import './script.js';
+
+// Importing shared header and footer components.
+import Header from "./views/shared/Header.js";
+import Footer from "./views/shared/Footer.js";
+
+// Page Component Imports
+import Home from "./views/Home.js";
+import AddPlanets from './views/AddPlanets.js';
+
+// Importing react router.
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Render Imported Header */}
+      <Header />
+        <main>
+          <BrowserRouter>
+            {/* Start of Application Routes */}
+            <Routes>
+              {/* Delcaring each route with the corresponding component that needs to be rendered. */}
+              <Route path="/" element={<Home />} />
+              <Route path="/add-planets" element={<AddPlanets />} />
+            </Routes>
+            {/* End of Application Routes */}
+          </BrowserRouter>
+        </main>
+      {/* Render Imported Footer */}
+      <Footer />
     </div>
   );
 }
