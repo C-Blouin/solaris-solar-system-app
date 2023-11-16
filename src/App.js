@@ -10,6 +10,7 @@ import Footer from "./views/shared/Footer.js";
 // Page Component Imports
 import Home from "./views/Home.js";
 import SolarSystem from './views/SolarSystem.js';
+import SpaceNews from './views/SpaceNews.js';
 
 // Importing react router.
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -26,6 +27,7 @@ function App() {
               {/* Delcaring each route with the corresponding component that needs to be rendered. */}
               <Route path="/" element={<Home />} />
               <Route path="/solar-system" element={<SolarSystem />} />
+              <Route path="/news" element={<SpaceNews />} />
             </Routes>
             {/* End of Application Routes */}
           </BrowserRouter>
