@@ -9,7 +9,7 @@ import Footer from "./views/shared/Footer.js";
 
 // Page Component Imports
 import Home from "./views/Home.js";
-import AddPlanets from './views/AddPlanets.js';
+import SolarSystem from './views/SolarSystem.js';
 
 // Importing react router.
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -25,7 +25,7 @@ function App() {
             <Routes>
               {/* Delcaring each route with the corresponding component that needs to be rendered. */}
               <Route path="/" element={<Home />} />
-              <Route path="/add-planets" element={<AddPlanets />} />
+              <Route path="/solar-system" element={<SolarSystem />} />
             </Routes>
             {/* End of Application Routes */}
           </BrowserRouter>
