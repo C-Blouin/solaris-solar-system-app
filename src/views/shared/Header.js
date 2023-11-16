@@ -24,7 +24,10 @@ function Header () {
                                 <a className="nav-link" aria-current="page" href="/">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="/add-planets">Custom Planets</a>
+                                <a className="nav-link" href="/solar-system">Solar System</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="/custom-planets">Add Planets</a>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link" href="/planetarium">Planetarium</a>
