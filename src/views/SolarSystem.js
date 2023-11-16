@@ -20,6 +20,11 @@ function SolarSystem () {
 
   // Use Effect Hook to fetch data from the API.
   useEffect(() => {
+
+    // Setting the title of the page.
+    document.title = 'Solaris | Solar System';
+
+
     // Using the Fetch method, I am making a get request to the link in the passed in parameter. (https://api.le-systeme-solaire.net/rest/bodies/)
     fetch('https://api.le-systeme-solaire.net/rest/bodies/')
     // Passing the fetched response to JSON.
