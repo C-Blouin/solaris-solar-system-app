@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 // Importing Hero and Getting Started Section Graphics.
 import happyAstronautGraphic from '../images/landing-images/happy-astronaut-graphic.svg';
 import astronautMoonGraphic from '../images/landing-images/astronaut-on-moon.svg';
@@ -8,6 +10,12 @@ import solarSystemIcon from '../images/features/solar-system-icon.svg';
 import spaceLander from '../images/features/space-lander.svg'
 
 function Home () {
+
+    // API Reference: https://api.spaceflightnewsapi.net/v4/docs/#/articles/articles_list   
+  useEffect(() => {
+        document.title = 'Solaris | Home';
+    },[]);
+
     return (
     <div>
         {/* Start of Hero Wrapper */}
@@ -74,7 +82,7 @@ function Home () {
                         <p>
                             Keep up to date on everything related to astronomy. From the latest discoveries to the most recent space missions, Solaris has you covered.
                         </p>
-                        <a href="#" title="Get The Latest Astronomy News">Learn More</a>
+                        <a href="/news" title="Get The Latest Astronomy News">Learn More</a>
                     </article>
                     {/* End of Third Feature Card */}
 
