@@ -63,7 +63,7 @@ function Home () {
                         <p>
                             Embark on a fascinating journey through our wondrous solar system and delve into a treasure trove of enlightening information about each unique planet.
                         </p>
-                        <a href="#" title="View Our Current Solar System">Learn More</a>
+                        <a href="/solar-system" title="View Our Current Solar System">Learn More</a>
                     </article>
                     {/* End of Second Feature Card */}
 
@@ -96,7 +96,7 @@ function Home () {
                 <p>
                     Embark on a journey beyond our world's galaxy with Solaris, where discovery is just the beginning. Explore a celestial sanctuary, a milky way toward inspiration, knowledge, and a mesmerizing glimpse into our universe.
                 </p>
-                <a href="/" title="Get Started With Solaris">Get Started</a>
+                <a href="/solar-system" title="Get Started With Solaris">Get Started</a>
                 </article>
                 {/* End of Getting Started Grid Text Content */}
 
