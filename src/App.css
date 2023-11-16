@@ -352,7 +352,9 @@ section {
 #hero > article a,
 #solaris-features a,
 #get-started > article a,
-#solar-system-intro > a {
+#solar-system-intro > a,
+#space-news-intro > a,
+#space-news article a {
   display: inline-block;
   background-color: white;
   color: var(--light-slate-black);
@@ -372,7 +374,9 @@ section {
 #hero > article a:hover, 
 #solaris-features a:hover,
 #get-started > article a:hover,
-#solar-system-intro > a:hover  {
+#solar-system-intro > a:hover,
+#space-news-intro > a:hover,
+#space-news article a:hover  {
   transform: translateY(0.2rem);
   background-color: var(--primary-color);
   color: var(--white);
@@ -620,7 +624,9 @@ footer .nav-link:hover {
 
 /* Solar system section and intro wrapper container styles. */
 .solar-system-wrapper,
-.intro-wrapper {
+.intro-wrapper,
+.space-news-wrapper,
+.news-intro {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -628,6 +634,7 @@ footer .nav-link:hover {
   min-height: 100vh;
 }
 
+.space-news-wrapper,
 .solar-system-wrapper {
   /* Thank you to Adobe Stock for the background image, reference here: https://stock.adobe.com/ca/search/images?k=space+cartoon+background&search_type=usertyped&asset_id=503188436 */
   background-image: radial-gradient(circle, rgba(22, 22, 22, 0.6) 0%, rgba(13, 13, 13, 1) 100%),
@@ -641,9 +648,17 @@ footer .nav-link:hover {
     url(../src/images/landing-images/happy-astronaut-graphic-light.svg);
 }
 
+.news-intro {
+    background-image: radial-gradient(circle, rgba(22, 22, 22, 0.2) 0%, rgba(13, 13, 13, 0.1) 100%),
+    url(../src/images/landing-images/astronaut-on-moon-light.svg);
+    background-size: contain;
+    background-position: right;
+}
+
 /* Solar system container styles. */
 #solar-system, 
-#solar-system-intro {
+#solar-system-intro,
+#space-news-intro {
   /* Display the contents as grid and center the content. */
   display: grid;
   align-content: center;
@@ -660,26 +675,31 @@ footer .nav-link:hover {
 }
 
 /* Solar system intro styles. */
-#solar-system-intro {
+#solar-system-intro,
+#space-news-intro {
   min-height: 60vh;
   padding: 20rem 1rem 15rem 1rem;
 }
 
+
 /* Solar system intro heading styles, clamping the font size to scale dynamically based on the viewport width. */
-#solar-system-intro h1 {
+#solar-system-intro h1,
+#space-news-intro h1 {
   font-size: clamp(var(--sub-heading), 5vw, var(--hero-heading));
   color: var(--primary-color);
 }
 
 /* Solar system intro paragraph styles. */
-#solar-system-intro > p {
+#solar-system-intro > p,
+#space-news-intro > p {
   color: var(--white);
   max-width: 800px;
   margin: 2rem auto;
 }
 
 /* Solar system intro anchor styles. */
-#solar-system-intro > a {
+#solar-system-intro > a,
+#space-news-intro > a {
   max-width: 250px;
   margin: 0 auto;
 }
@@ -714,17 +734,21 @@ footer .nav-link:hover {
 /* Start of Card styles */
 
 /*Planet card image styles. */
-.planet-img {
+.planet-img,
+.news-img {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  border-radius: 10px 10px 0 0;
+  border-radius: 0.25rem;
 }
 
 /* All the planet images will render with a max-width of 250px with a height of auto. */
 .planet-img img {
-  max-width: 250px;
   height: auto;
+}
+
+.planet-img img {
+  max-width: 250px;
 }
 
 /* The 6th planet image (Saturn) needs to appear larger due to the image border. */
@@ -780,3 +804,101 @@ footer .nav-link:hover {
 }
 
 /* End of Grid Section Container Styles */
+
+
+/* Start of Space News Styles */
+
+#space-news {
+  margin: 0 auto;
+  max-width: 1600px;
+  padding: 5rem 0 10rem 0;
+}
+
+/* Container to hold the news image and content side by each using grid columns. */
+#space-news article {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  /* Center the content */
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  /* Top and bottom white space between each fetched news article. */
+  margin: 3rem 0;
+}
+
+/* News image styles. */
+.news-img img {
+  /* Fixed width and height for all news images to keep them consistent. */
+  max-width: 300px;
+  height: 300px;
+  /* Round all images with border radius. */
+  border-radius: 0.5rem;
+  /* Add a filtering and opacity property to more closely match the theme of the website pages. */
+  filter: opacity(0.8);
+  mix-blend-mode: luminosity;
+  object-fit: cover;
+}
+
+/* News image container grid */
+#space-news article figure {
+  /* News image starts in the 2nd column and ends at the 5th. */
+  grid-area: 1 / 2 / 2 / 5;
+  
+}
+
+/* News content container grid. */
+#space-news article div {
+  /* News article content starts at the 4th column and ends at the 11th. */
+  grid-area: 1 / 4 / 2 / 11;
+  padding: 4rem;
+}
+
+/* Remove global padding for the news article paragraph contents. */
+#space-news article div p {
+  padding: 0;
+}
+
+/* Recenter the news article image and text contents at screen widths of 1400px wide */
+@media screen and (max-width: 1400px) {
+
+  /* News image container grid */
+  #space-news article figure {
+    grid-area: 1 / 2 / 2 / 5;
+  }
+
+  #space-news article div {
+    grid-area: 1 / 5 / 2 / 11;
+    padding: 2rem;
+  }
+}
+
+/* At device widths of 600px wide, remove the image visiually with visibility: hidden, this still keeps the imag ein the DOM for accessibility needs. */
+@media screen and (max-width: 600px) {
+
+  .news-img img {
+    visibility: hidden;
+  }
+
+  /* The article text content container will take up all of the grid space, spanning the entirey of 11 columns wide. */
+  #space-news article div {
+    grid-area: 1 / 1 / 1 / 11;
+    text-align: center;
+  }
+}
+
+/* News article heading, body copy, and anchor styles. */
+#space-news article h3 {
+  color: var(--primary-color);
+  margin-bottom: 1.75rem;
+}
+
+#space-news article p {
+  color: var(--white);
+}
+
+#space-news article div p:nth-of-type(2) {
+  font-family: var(--links-font);
+  font-size: clamp(0.8rem, 2vw, var(--font-xxs));
+}
+
+/* End of Space News Styles */
