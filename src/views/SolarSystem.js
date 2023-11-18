@@ -1,3 +1,4 @@
+// Importing State, and Effect Package Libraries
 import React, { useState, useEffect } from 'react';
 
 // Thank you to Adobe Stock for the Planet Graphics: https://stock.adobe.com/ca/images/set-of-star-and-planets-on-galaxy-background/428716602?prev_url=detail
@@ -12,7 +13,6 @@ import neptune from '../images/solar-system-planets/neptune.svg';
 import sun from '../images/solar-system-planets/sun.svg';
 
 
-
 function SolarSystem () {
 
   // Setting the initial state of the planets array to an empty array.
@@ -24,15 +24,14 @@ function SolarSystem () {
     // Setting the title of the page.
     document.title = 'Solaris | Solar System';
 
-
     // Using the Fetch method, I am making a get request to the link in the passed in parameter. (https://api.le-systeme-solaire.net/rest/bodies/)
     fetch('https://api.le-systeme-solaire.net/rest/bodies/')
     // Passing the fetched response to JSON.
       .then((response) => response.json())
       // Setting the state of the planets array to the data from the API.
       .then((planetData) => {
-        // Filtering the data to only include the planets that are common to our Solar System, in this case I am specifying the planets in an Array, using the includes method to check if the planet is included in the array using the englishName property from the fetched JSON data.
-        const commonPlanets = planetData.bodies.filter((planet) =>
+          // Filtering the data to only include the planets that are common to our Solar System, in this case I am specifying the planets in an Array, using the includes method to check if the planet is included in the array using the englishName property from the fetched JSON data.
+          const commonPlanets = planetData.bodies.filter((planet) =>
           ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Sun'].includes(
             planet.englishName
           )
@@ -40,9 +39,10 @@ function SolarSystem () {
         // Once the data has been filtered, I am setting the state of the planets array to the filtered data.
         setPlanets(commonPlanets);
       })
+      
       // Catching any errors and logging them to the console.
       .catch((error) => console.error('Error fetching data:', error));
-  }, []);
+    }, []);
 
   // Planet Container Object variable to hold the planet images from the imported images above. These are passed into the image source of the mapped planets.
   const planetContainer = {
@@ -74,6 +74,7 @@ function SolarSystem () {
 
       {/* Start of Solar System Section */}
       <section id="solar-system">
+
         <div className="planet-card-container" id='planet-container'>
 
           {/* Mapping through the useState planets array and rendering the fetched planet data for each planet in the array. */}
@@ -104,7 +105,9 @@ function SolarSystem () {
 
             </article>
           ))}
+          
         </div>
+
       </section>
       {/* End of Solar System Section */}
 
