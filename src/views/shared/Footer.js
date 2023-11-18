@@ -19,7 +19,7 @@ function Footer () {
                         <a className="nav-link" href="/solar-system">Solar System</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/custom-planets">Add Planets</a>
+                        <a className="nav-link" href="/add-planets">Add Planets</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="/planetarium">Planetarium</a>
