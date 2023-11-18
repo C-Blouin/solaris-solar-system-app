@@ -354,7 +354,9 @@ section {
 #get-started > article a,
 #solar-system-intro > a,
 #space-news-intro > a,
-#space-news article a {
+#space-news article a,
+#add-planet-btn,
+#planetary-intro a {
   display: inline-block;
   background-color: white;
   color: var(--light-slate-black);
@@ -371,12 +373,20 @@ section {
   min-width: 180px;
 }
 
+#planetary-intro a:nth-of-type(2) {
+  background-color: var(--primary-color);
+  box-shadow: 6px 6px 0 0 var(--white);
+  color: var(--white);
+}
+
 #hero > article a:hover, 
 #solaris-features a:hover,
 #get-started > article a:hover,
 #solar-system-intro > a:hover,
 #space-news-intro > a:hover,
-#space-news article a:hover  {
+#space-news article a:hover,
+#add-planet-btn:hover,
+#planetary-intro a:hover  {
   transform: translateY(0.2rem);
   background-color: var(--primary-color);
   color: var(--white);
@@ -385,6 +395,12 @@ section {
 
 #solaris-features a:hover{
   box-shadow: 6px 6px 0 0 var(--light-slate-black);
+}
+
+#planetary-intro a:nth-of-type(2):hover {
+  background-color: var(--white);
+  color: var(--light-slate-black);
+  box-shadow: 6px 6px 0 0 var(--primary-color);
 }
 
 .image-wrapper {
@@ -626,7 +642,9 @@ footer .nav-link:hover {
 .solar-system-wrapper,
 .intro-wrapper,
 .space-news-wrapper,
-.news-intro {
+.news-intro,
+.planetarium-wrapper,
+.planetarium-intro-wrapper {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -639,7 +657,12 @@ footer .nav-link:hover {
   /* Thank you to Adobe Stock for the background image, reference here: https://stock.adobe.com/ca/search/images?k=space+cartoon+background&search_type=usertyped&asset_id=503188436 */
   background-image: radial-gradient(circle, rgba(22, 22, 22, 0.6) 0%, rgba(13, 13, 13, 1) 100%),
   url(../src/images/landing-images/galaxy-background-dark.jpeg);
- 
+}
+
+.planetarium-wrapper {
+  /* Thank you to Adobe Stock for the background image graphic, reference here: https://stock.adobe.com/ca/images/vector-flat-space-design-background-with-small-elements/217913053?prev_url=detail */
+  background-image: radial-gradient(circle, rgba(22, 22, 22, 0.6) 0%, rgba(13, 13, 13, 1) 100%),
+  url(../src/images/landing-images/galaxy-map-image.jpeg);
 }
 
 .intro-wrapper {
@@ -658,7 +681,8 @@ footer .nav-link:hover {
 /* Solar system container styles. */
 #solar-system, 
 #solar-system-intro,
-#space-news-intro {
+#space-news-intro,
+#planetary-intro {
   /* Display the contents as grid and center the content. */
   display: grid;
   align-content: center;
@@ -676,7 +700,8 @@ footer .nav-link:hover {
 
 /* Solar system intro styles. */
 #solar-system-intro,
-#space-news-intro {
+#space-news-intro,
+#planetary-intro {
   min-height: 60vh;
   padding: 20rem 1rem 15rem 1rem;
 }
@@ -684,14 +709,16 @@ footer .nav-link:hover {
 
 /* Solar system intro heading styles, clamping the font size to scale dynamically based on the viewport width. */
 #solar-system-intro h1,
-#space-news-intro h1 {
+#space-news-intro h1,
+#planetary-intro h1 {
   font-size: clamp(var(--sub-heading), 5vw, var(--hero-heading));
   color: var(--primary-color);
 }
 
 /* Solar system intro paragraph styles. */
 #solar-system-intro > p,
-#space-news-intro > p {
+#space-news-intro > p,
+#planetary-intro > p {
   color: var(--white);
   max-width: 800px;
   margin: 2rem auto;
@@ -699,7 +726,8 @@ footer .nav-link:hover {
 
 /* Solar system intro anchor styles. */
 #solar-system-intro > a,
-#space-news-intro > a {
+#space-news-intro > a,
+#planetary-intro a {
   max-width: 250px;
   margin: 0 auto;
 }
@@ -902,3 +930,300 @@ footer .nav-link:hover {
 }
 
 /* End of Space News Styles */
+
+#add-planet,
+#planet-collection {
+  justify-content: center;
+  justify-items: center;
+  min-height: 100vh;
+  padding: 20rem 0;
+}
+
+@media screen and (max-width: 1200px){
+  #add-planet {
+    padding: 15rem 0;
+  }
+}
+
+#planet-collection {
+  display: grid;
+}
+
+.add-planet-wrapper,
+.planet-collection-wrapper {
+  /* Thank you to Adobe Stock for the background image graphic, reference here: https://stock.adobe.com/ca/images/vector-flat-space-design-background-with-small-elements/217913053?prev_url=detail */
+  background-image: radial-gradient(circle, rgba(22, 22, 22, 0.7) 0%, rgba(13, 13, 13, 0.95) 100%), 
+  url(../src/images/landing-images/galaxy-map-image.jpeg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+/* Set the width of the form contents */
+#add-planet form {
+  max-width: 860px;
+  /* Center the form container. */
+  margin: 0 auto;
+  padding: 1.2em 1em;
+  text-align: center;
+}
+
+/* Form primary heading styles. */
+#add-planet form h1 {
+  /* Dynamically adjust the font size depending on the vertical width of the viewport. */
+  font-size: clamp(var(--font-lg), 5vw, var(--secondary-heading));
+  color: var(--primary-color);
+  text-transform: uppercase;
+}
+
+/* Form content styles. */
+#add-planet form p {
+  color: var(--white);
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+#add-planet form h1,
+#add-planet form p {
+  text-align: center;
+}
+
+#add-planet-btn {
+ margin: 2rem auto 0 auto;
+}
+
+/* Form label styles. */
+#add-planet .form-label {
+  color: var(--white);
+  font-family: var(--heading-font);
+  text-align: left;
+  margin: 1rem 0;
+}
+
+/* White space between the form labels and text area field. */
+#add-planet form > div:nth-of-type(4) .form-label {
+  margin-top: 2rem;
+}
+
+#add-planet form > div:nth-of-type(4) textarea {
+  margin-bottom: 2rem;
+}
+
+/* Overwriting bootstrap form styles of the form-control class. */
+#add-planet .form-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  /* Font properties. */
+  font-size: 1rem;
+  font-weight: 400;
+  font-family: var(--heading-font);
+  line-height: 1.5;
+  letter-spacing: 0.1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-clip: padding-box;
+  /* Border properties. */
+  border: 1px solid var(--primary-color);
+  border-radius: 0;
+  outline: 0.15rem solid var(--light-slate-black);
+  /* Theme Properties. */
+  color: var(--light-slate-black);
+  box-shadow: 6px 6px 0 0 var(--primary-color);
+  transition: var(--transition);
+}
+
+/* On hover of the form-control inputs, the element will change colours and shift downwards slightly on the Y axis, indicating to the user that they are able to interact with the inputs. */
+#add-planet .form-control:hover  {
+  transform: translateY(0.1rem);
+  background-color: var(--primary-color);
+  color: var(--white);
+  box-shadow: 6px 6px 0 0 var(--white);
+}
+
+/* When a form field is in the focused state, the background will disappear to indicate that the input is selected and ready to type text into.  */
+#add-planet .form-control:focus {
+  color: var(--white);
+  background-color: transparent;
+  outline: 0;
+  transition: var(--transition);
+  box-shadow: 0 0 0 0.15rem rgba(255, 255, 255, 0.8)
+}
+
+/* Remove the default bootstrap border from any buttons with the type equal to submit. */
+#add-planet [type=submit] {
+  border: none;
+}
+
+/* Custom planet grid container, creates 3 equal columns. */
+#custom-planet {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ grid-gap: 3rem;
+ /* Center the container contents. */
+ text-align: center;
+ min-height: 100vh;
+ justify-content: center;
+ /* Set a max-width of the container */
+ max-width: 1600px;
+ padding: 5rem 2rem 15rem 2rem;
+}
+
+/* On device widths of 1366px, the custom planets container will change into a two column layout */
+@media screen and (max-width: 1366px) {
+  #custom-planet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Convert the custom planets container to a single column layout on device widths of 820px. */
+@media screen and (max-width: 820px) {
+  #custom-planet {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Custom planet article heading styles. */
+#custom-planet-card-container h3 {
+  color: var(--primary-color);
+  /* Dynamically scale the font size depending on the viewports vertical width. */
+  font-size: clamp(var(--font-lg), 5vw, 2rem);
+  font-family: var(--links-font);
+  text-transform: capitalize;
+}
+
+#custom-planet ul {
+  /* Remove default list styles. */
+  list-style: none;
+  /* Remove default padding and margins from the unordered list elements. */
+  padding: 0;
+  margin: 2rem 0;
+  /* The list will display as flex with the wrap property, to allow all list item children to wrap when there isn't enough space in the container to prevent overflow. */
+  display: flex;
+  flex-wrap: wrap;
+  /* Center the content. */
+  justify-content: center;
+  /* White space between the flex items. */
+  gap: 1rem;
+}
+
+/* Custom planet unordered list styles. */
+#custom-planet ul li,
+#custom-planet p {
+  background-color: rgba(84, 125, 201, 0.05);
+  /* White space. */
+  padding: 0.8rem 2rem;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.1rem;
+  margin-top: 1rem;
+  /* Set up a transition so when this element is hovered later on. */
+  transition: var(--transition);
+  /* Font properties. */
+  font-family: var(--heading-font);
+  font-size: clamp(0.8rem, 2vw, var(--font-xxs));
+}
+
+/* Custom planet list item hover styles. */
+#custom-planet ul li:hover,
+#custom-planet p:hover {
+  transform: translateX(0.2rem) scale(1.01);
+  background-color: var(--white);
+  color: var(--light-slate-black);
+}
+
+/* Custom planet article card paragraph styles. */
+#custom-planet-card-container p {
+  margin-top: 2rem;
+  font-family: var(--links-font);
+  color: var(--white);
+  font-size: clamp(1rem, 2vw, var(--font-xxs));
+}
+
+/* Custom planet Explore and Add buttons anchor styles. */
+.intro-button-container {
+  /* Center the button container. */
+  max-width: 600px;
+  margin: 0 auto;
+  /* Display the buttons side by each with flex. */
+  display: flex;
+  /* Space the children (anchor elements) */
+  gap: 3rem;
+  /* Center the container contents. */
+  justify-content: center;
+  align-items: center;
+}
+
+/* When the device width is 768px wide (mobile), the container will change to flex-direction column to allow the anchors to stack vertically without overflow. */
+@media screen and (max-width: 768px) {
+  .intro-button-container {
+    flex-direction: column;
+  }
+}
+
+/* Start of Back to Top Button Styles */
+#back-to-top {
+  border: none;
+  /* Hide the button initially */
+  display: none;
+  /* Position the button off screen to allow the fade in animation to bring it into the viewport. */
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  /* Set the z-index to the top of the stack order, to allow the button to be visible anywhere in the document. */
+  z-index: 10;
+  cursor: pointer;
+  /* Set the opacity, transition, and animation properties for keyframe animation */
+  opacity: 0;
+  /* Transition and animatioon property set up. */
+  transition: opacity 0.3s ease-in-out;
+  animation: fadeIn 0.3s forwards;
+}
+
+/* On mobile devices, the back to top button will become slightly smaller and move off to the bottom right corner to prevent blocking important elements. */
+@media screen and (max-width: 768px) {
+  #back-to-top {
+    right: 20px;
+    bottom: 20px;
+  }
+
+  #back-to-top svg {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Set up a transition for when the SVG is hovered */
+#back-to-top svg {
+  transition: 0.3s ease-in-out;
+}
+
+/* On SVG hover, adjust the fill, to indicate the button is clickable. */
+#back-to-top svg:hover .st0,
+#back-to-top svg:hover .st1 {
+  fill: rgb(138, 179, 255);
+}
+
+/* Translate the button up slightly. */
+#back-to-top svg:hover {
+  transform: translateY(-0.2rem);
+}
+
+
+/* Back to Top Button Keyframes */
+@keyframes fadeIn {
+  
+  /* Keyframes to control the fade in and fade out of the back to top button. */
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* End of Back to Top Button Styles */
