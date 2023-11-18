@@ -6,8 +6,13 @@
 Solaris is a solar system application that allows users to create custom-crafted planets, view relevant information about our current and most recognizable solar system, and a news outlet where users can seek up-to-date information on various space-related topics. The overall purpose is to provide users with a fun playground to explore many aspects of astronomy through crafting custom planets and learning from the fetched educational resources.
 
 <br>
-<h2><a href="https://solaris-green.vercel.app/" alt="Solaris Solar System Application Link!" title=" View Solaris | Solar System App " target="_blank">View Live Application Here </a></h2>
+<h2><a href="https://solaris-green.vercel.app/" alt="Solaris Solar System Application Link!" title="View Solaris | Solar System App" target="_blank">View Live Application Here </a></h2>
 Link to application: https://solaris-green.vercel.app/
+<br>
+<br>
+<h2><a href="https://www.youtube.com/watch?v=6kJrTq-gFUU" alt="Solaris Live Demonstration Link" title="Solaris Live Video Demonstration Link" target="_blank">View Application Demonstration Here</a></h2>
+Link to demonstration: https://www.youtube.com/watch?v=6kJrTq-gFUU
+<br>
 <br>
 
 ## Key Features
