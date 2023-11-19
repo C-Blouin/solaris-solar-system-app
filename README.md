@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Solaris | Solar System Playground & Space Flight News Application
 
-## Available Scripts
+## Purpose
+Solaris is a solar system application that allows users to create custom-crafted planets, view relevant information about our current and most recognizable solar system, and a news outlet where users can seek up-to-date information on various space-related topics. The overall purpose is to provide users with a fun playground to explore many aspects of astronomy through crafting custom planets and learning from the fetched educational resources.
 
-In the project directory, you can run:
+<br>
+<h2><a href="https://solaris-green.vercel.app/" alt="Solaris Solar System Application Link!" title="View Solaris | Solar System App" target="_blank">View Live Application Here </a></h2>
+Link to application: https://solaris-green.vercel.app/
+<br>
+<br>
+<h2><a href="https://www.youtube.com/watch?v=6kJrTq-gFUU" alt="Solaris Live Demonstration Link" title="Solaris Live Video Demonstration Link" target="_blank">View Application Demonstration Here</a></h2>
+Link to demonstration: https://www.youtube.com/watch?v=6kJrTq-gFUU
+<br>
+<br>
 
-### `npm start`
+## Key Features
+<br>
+<ul>
+  <li>Fetching JSON data from APIs. In this application, I'm fetching planet data and space news article data.</li>
+  <li>Utilizes local storage and useContext to pass planet information between components.</li>
+</ul>
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Core Components Overview
+<br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Current Solar System Component
 
-### `npm test`
+This component utilizes the useState from React to hold the planet data, creates a request to an API to fetch JSON data, filters the data into our current solar system planets by English name, and the returned data gets set to a new state. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Once the planet state is set, the array of planets can be mapped and rendered to the page using the JSON body information to display the planet's name, radius, distance from the sun, gravity, etc.  
 
-### `npm run build`
+Thank you to System Solaire for the API, reference here: https://api.le-systeme-solaire.net/
+<br>
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Add Planet Component
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The add planet component uses context, useState, and useEffect to manipulate and pass data to the "Planetarium" component, which is the page that displays the user's custom planets. The App.js file holds the planets in local storage if any exist, and the context provider allows the planet array to be used by other components, in this the "Planetarium" component.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The add planet component also features a useState counter to associate unique id keys to each planet object that is passed in from the form data submission, this counter increments for every planet added to prevent key entry errors.  
+<br>
 
-### `npm run eject`
+### Planetarium Component
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+This component imports the PlanetContext from the App.js file, allowing access to the planet data. Since this component has the context provided to it, the custom planet objects are mapped and rendered to the screen. The planet objects are stored locally in storage due to setting the item state in the App.js file.
+<br>
+<br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Space News Component
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The news component requests JSON data from the space flight news API. The API returns up-to-date news articles regarding various space-related topics. The data is then mapped and rendered to the browser with an article title, summary, and link to the full article for each object.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Thank you to Spaceflight News for the API, reference here: https://api.spaceflightnewsapi.net/v4/articles/
+<br>
+<br>
 
-## Learn More
+## Layout & Design Elements
+<p>The design and layout were built using a combination of my own custom CSS styles and Bootstrap components. I used Bootstrap to create my form layout and navigation components, and the remainder of the styles were written by me (Christopher Blouin).</p>
+<br>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Local Usage Steps
+<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+>[!NOTE]
+> <strong>If you plan to view this project on your local machine in the browser, please follow the steps below!</strong>
 
-### Code Splitting
+<br>
+Download the repository ZIP folder containing the code, and please install node.js if not already installed on your computer. 
+<br>
+<p><a href="https://nodejs.org/en/download" alt="Node.js Download Link" title="Download Node.js" target="_blank">Download Node.js Here</a></p>
+<br>
+Open the project folder in a code editor, preferrable Visual Studio Code. And run the following commands:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br>
+<br>
 
-### Analyzing the Bundle Size
+```npm i``` to install any necessary packages from package.json
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+After all dependencies are installed, enter the following command to open the project on a local host in your browser.
 
-### Making a Progressive Web App
+```npm start ``` to start the application locally in the browser
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
