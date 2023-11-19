@@ -103,9 +103,9 @@ function Home () {
                     <article>                
                     <h2>Blast Off Into Solaris</h2>
                     <p>
-                        Embark on a journey beyond our world's galaxy with Solaris, where discovery is just the beginning. Explore a celestial sanctuary, a milky way toward inspiration, knowledge, and a mesmerizing glimpse into our universe.
+                        Get started with Solaris by visting our solar system, where you can explore common planets in our solar system, or create your own custom planets to discover in your very own planetarium!
                     </p>
-                    <a href="/solar-system" title="Get Started With Solaris">Get Started</a>
+                    <a href="/solar-system" title="Get Started With Solaris">Blast Off!</a>
                     </article>
                     {/* End of Getting Started Grid Text Content */}
 
