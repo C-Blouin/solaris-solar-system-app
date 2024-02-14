@@ -10,10 +10,6 @@ Solaris is a solar system application that allows users to create custom-crafted
 Link to application: https://solaris-green.vercel.app/
 <br>
 <br>
-<h2><a href="https://www.youtube.com/watch?v=6kJrTq-gFUU" alt="Solaris Live Demonstration Link" title="Solaris Live Video Demonstration Link" target="_blank">View Application Demonstration Here</a></h2>
-Link to demonstration: https://www.youtube.com/watch?v=6kJrTq-gFUU
-<br>
-<br>
 
 ## Key Features
 <br>
